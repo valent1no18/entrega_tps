@@ -12,13 +12,12 @@ def usarlafuerza(mochila, objeto_a_buscar, contadordeobjetos):
     La función utiliza recursividad para buscar el objeto en la lista de objetos de la mochila.
 
     """
-   
-    if mochila[0] == objeto_a_buscar:
+    if not mochila:
+        print(f"La mochila está vacía, no encontramos nuestro {objeto_a_buscar} en ella.") #Caso base: si la mochila está vacía, no se encontró el objeto.
+        return contadordeobjetos    
+    elif mochila[0] == objeto_a_buscar:
         print(f"¡Encontramos nuestro {objeto_a_buscar} en la mochila!")
         return contadordeobjetos + 1
-    elif len(mochila) == 1:
-        print(f"¡No encontramos nuestro {objeto_a_buscar} en la mochila y esta quedo vacía!") 
-        return contadordeobjetos 
     else:
         print(f"{mochila[0]} no es el que buscamos, seguimos buscando...")
         input("<<Presione enter para continuar buscando>>")
@@ -28,7 +27,7 @@ def usarlafuerza(mochila, objeto_a_buscar, contadordeobjetos):
 
 
 mochila = ["Comunicador", "Respirador", "Botiquin", "Sable de Luz" , "Objetos personales", "Comida", "Agua", "Municiones", "Cargador", "Linterna"] 
-objeto_a_buscar = "Sable"
+objeto_a_buscar = "Sable de Luz"
 contador = 0 
 
 print("La mochila Jedi contiene los siguientes objetos: ", mochila)
