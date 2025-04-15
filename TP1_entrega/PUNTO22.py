@@ -6,35 +6,35 @@
 
 #FUNCIÓN RECURSIVA
 
-def usarlafuerza(mochila, objeto_a_buscar, contadordeobjetos):
+def usarlafuerza(mochila_items, objeto_a_buscar, contadordeobjetos):
     """
     Función que busca un objeto en la mochila Jedi usando la fuerza.
     La función utiliza recursividad para buscar el objeto en la lista de objetos de la mochila.
 
     """
-    if not mochila:
-        print(f"La mochila está vacía, no encontramos nuestro {objeto_a_buscar} en ella.") #Caso base: si la mochila está vacía, no se encontró el objeto.
-        return contadordeobjetos    
-    elif mochila[0] == objeto_a_buscar:
+    if not mochila_items: #Caso base: si la mochila está vacía, no se encontró el objeto.
+        print(f"La mochila está vacía, no encontramos nuestro {objeto_a_buscar} en ella.") 
+        
+    elif mochila_items[0] == objeto_a_buscar:
         print(f"¡Encontramos nuestro {objeto_a_buscar} en la mochila!")
         return contadordeobjetos + 1
     else:
-        print(f"{mochila[0]} no es el que buscamos, seguimos buscando...")
+        print(f"{mochila_items[0]} no es el que buscamos, seguimos buscando...")
         input("<<Presione enter para continuar buscando>>")
-        return usarlafuerza(mochila[1:], objeto_a_buscar, contadordeobjetos + 1)
+        return usarlafuerza(mochila_items[1:], objeto_a_buscar, contadordeobjetos + 1)
         
         
 
 
 mochila = ["Comunicador", "Respirador", "Botiquin", "Sable de Luz" , "Objetos personales", "Comida", "Agua", "Municiones", "Cargador", "Linterna"] 
-objeto_a_buscar = "Sable de Luz"
+objeto_buscado = "Sable de L"
 contador = 0 
 
 print("La mochila Jedi contiene los siguientes objetos: ", mochila)
 print("------------------------------------------------")
 print("Buscamos en la mochila...")
-print(f"Debemos encontrar el {objeto_a_buscar} en la mochila...")
+print(f"Debemos encontrar el {objeto_buscado} en la mochila...")
 
 #Para mostrar la cantidad de objetos que se han sacado de la mochila.
-contadorfinal = usarlafuerza(mochila, objeto_a_buscar, contador) 
+contadorfinal = usarlafuerza(mochila, objeto_buscado, contador) 
 print("Objetos sacados de la mochila: ", contadorfinal)
