@@ -21,7 +21,7 @@ def usarlafuerza(mochila_items, objeto_a_buscar, contadordeobjetos):
     else:
         print(f"{mochila_items[0]} no es el que buscamos, seguimos buscando...")
         input("<<Presione enter para continuar buscando>>")
-        return usarlafuerza(mochila_items[1:], objeto_a_buscar, contadordeobjetos + 1)
+        return usarlafuerza(mochila_items[1:], objeto_a_buscar, contadordeobjetos + 1) 
         
         
 
