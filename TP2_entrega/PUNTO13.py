@@ -1,7 +1,7 @@
-#13. Dada una pila con los trajes de Iron Man utilizados en las películas de Marvel Cinematic Uni-
+#Ejercicio 13: Trajes de Iron Man. 
+#Dada una pila con los trajes de Iron Man utilizados en las películas de Marvel Cinematic Uni-
 #verse (MCU) de los cuales se conoce el nombre del modelo, nombre de la película en la que se
-#usó y el estado en que quedó al final de la película (Dañado, Impecable, Destruido), resolver
-#las siguientes actividades:
+#usó y el estado en que quedó al final de la película (Dañado, Impecable, Destruido), resolver las siguientes actividades:
 
 
 from stack import Stack

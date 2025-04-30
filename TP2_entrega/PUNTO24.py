@@ -1,4 +1,5 @@
-#24. Dada una pila de personajes de Marvel Cinematic Universe (MCU), de los cuales se dispone de
+#Ejercicio 24: Personajes de Marvel. 
+#Dada una pila de personajes de Marvel Cinematic Universe (MCU), de los cuales se dispone de
 #su nombre y la cantidad de películas de la saga en la que participó, implementar las funciones
 #necesarias para resolver las siguientes actividades:
 
