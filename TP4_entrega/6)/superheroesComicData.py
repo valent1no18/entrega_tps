@@ -1,0 +1,30 @@
+
+class Superhero:
+    
+    def __init__(self, name, shortBio, año, casaComic):
+        self.name = name
+        self.shortBio = shortBio
+        self.año = año
+        self.casaComic = casaComic
+
+    def __str__(self):
+        return f" Nombre: {self.name} - Año Aparición: {self.año} - Casa a la que pertenece: {self.casaComic} - Biografia breve: {self.shortBio}"
+
+def order_by_name(heroe):
+    return heroe.name
+
+
+superheroes = [
+    ("Flash", 1956, "DC Comics", "El científico forense Barry Allen obtuvo la capacidad de moverse a velocidades sobrehumanas después de ser alcanzado por un rayo y bañado en químicos. Utiliza su supervelocidad para combatir el crimen como Flash, e incluso puede manipular el tiempo y las dimensiones en ciertas ocasiones."),
+    ("Wolverine", 1974, "Marvel Comics", "Nacido como James Howlett en Alberta, Canadá, a finales del siglo XIX, Wolverine es un mutante con varias habilidades distintivas: un factor de curación regenerativo increíblemente rápido, sentidos animales agudizados (olfato, vista, oído), y tres garras retráctiles de hueso en cada mano."),
+    ("Superman", 1938, "DC Comics", "Originario del planeta Krypton, fue enviado a la Tierra por sus padres justo antes de la destrucción de su mundo natal. Criado en Smallville por los granjeros Jonathan y Martha Kent, desarrolló habilidades sobrehumanas gracias a la radiación del sol amarillo de la Tierra. Trabaja como periodista en Metrópolis bajo la identidad de Clark Kent y usa sus poderes para proteger a la humanidad como Superman."),
+    ("Spider-Man", 1962, "Marvel Comics", "El estudiante de secundaria Peter Parker obtuvo poderes arácnidos (fuerza, agilidad, la capacidad de trepar muros y un 'sentido arácnido' premonitorio) después de ser picado por una araña radiactiva. Tras la trágica muerte de su tío Ben, aprendió que 'un gran poder conlleva una gran responsabilidad' y decidió usar sus habilidades para luchar contra el crimen en la ciudad de Nueva York."),
+    ("Doctor Strange", 1963, "DC Comics", "El Dr. Stephen Strange era un neurocirujano de renombre mundial, brillante pero también arrogante y egocéntrico. Su vida cambió drásticamente cuando un grave accidente automovilístico le causó un daño nervioso irreparable en sus manos, acabando con su carrera quirúrgica. Desesperado por encontrar una cura, viajó por todo el mundo hasta llegar al Himalaya, donde conoció a la Anciana (Ancient One), una hechicera ancestral."),
+    ("Mujer Maravilla", 1941, "DC Comics", "Princesa de las Amazonas de la isla paradisíaca de Temiscira, una sociedad de guerreras inmortales creada por las diosas griegas. Diana es hija de la Reina Hippolyta. Fue entrenada desde niña para ser una guerrera excepcional. Cuando el piloto Steve Trevor se estrella en su isla y les habla del conflicto en el \"mundo del hombre\" (la Segunda Guerra Mundial), Diana decide dejar su hogar para luchar por la paz y la justicia. En el mundo exterior, adopta la identidad de Diana Prince. Posee fuerza, velocidad, resistencia y reflejos sobrehumanos, además de ser una experta combatiente cuerpo a cuerpo. Sus armas icónicas incluyen el Lazo de la Verdad, que obliga a quien lo porta a decir la verdad, y los Brazaletes de Sometimiento, que pueden desviar balas y otros proyectiles."),
+    ("Batman", 1939, "DC Comics", "Bruce Wayne, multimillonario de Gotham City, combate el crimen como Batman tras presenciar el asesinato de sus padres cuando era niño."),
+    ("Linterna Verde", 1959, "DC Comics", "Hal Jordan era un temerario piloto de pruebas que trabajaba para Ferris Aircraft. Un día, el alienígena Abin Sur, un miembro del Cuerpo de Linternas Verdes, se estrelló en la Tierra y, estando al borde de la muerte, le entregó su anillo de poder. El anillo eligió a Hal por su gran fuerza de voluntad y su capacidad para superar el miedo. Hal se convirtió en el primer humano en ser miembro del Cuerpo de Linternas Verdes, una fuerza policial intergaláctica encargada de mantener la paz en el universo. "),
+    ("Capitana Marvel", 1968, "Marvel Comics", "Carol Danvers era una piloto de la Fuerza Aérea de los Estados Unidos y agente de la CIA. Durante una misión en la que estuvo involucrada la tecnología Kree (una raza alienígena avanzada), sufrió una explosión que fusionó su ADN con el del Capitán Mar-Vell, un héroe Kree. Esto le otorgó superpoderes, incluyendo fuerza, velocidad, resistencia y la capacidad de volar y proyectar energía. Inicialmente adoptó el nombre de Ms. Marvel, pero más tarde asumió el manto de Capitana Marvel en homenaje a Mar-Vell. Es una líder nata, una luchadora formidable y una defensora del universo, habiendo trabajado con los Vengadores y otras organizaciones de superhéroes. Sus poderes incluyen la absorción y manipulación de energía, vuelo a velocidades supersónicas y la capacidad de transformarse en su forma binaria, donde sus poderes aumentan enormemente y obtiene control sobre el espectro electromagnético."), 
+    ("Star-Lord", 1976, "Marvel Comics", "Peter Quill era un niño normal de la Tierra hasta que su madre fue asesinada por extraterrestres. Poco después, fue abducido por una facción de piratas espaciales liderada por Yondu Udonta, quienes lo criaron y lo convirtieron en un astuto y hábil forajido espacial. Años más tarde, Peter se autodenominó Star-Lord y comenzó a operar por su cuenta, a menudo metiéndose en problemas por toda la galaxia. En una de sus aventuras, se unió a un variopinto grupo de inadaptados que incluían a Gamora, Drax el Destructor, Rocket Raccoon y Groot. Juntos, formaron los Guardianes de la Galaxia, un equipo dedicado a proteger la galaxia de diversas amenazas."),
+    ("Iron Man", 1963, "Marvel Comics", "Tony Stark, un genio inventor y empresario, crea una armadura avanzada para salvar su vida y luego la usa para proteger al mundo como Iron Man."),
+    ("Wonder Woman", 1941, "DC Comics", "Diana, princesa de las Amazonas, posee poderes divinos y lucha por la justicia, el amor y la igualdad como Wonder Woman.")
+]
