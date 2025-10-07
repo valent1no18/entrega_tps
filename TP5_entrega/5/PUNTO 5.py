@@ -43,7 +43,10 @@ def nodeCounter(tree_):
         if root is None:
             return 0
 
-        return 1  + __nodeCounter(root.left) + __nodeCounter(root.right)
+        if not root.other_values.isVillano:
+            return 1 + __nodeCounter(root.left) + __nodeCounter(root.right)
+        else:
+            return __nodeCounter(root.left) + __nodeCounter(root.right)
     
     return __nodeCounter(tree_.root)
 
@@ -107,7 +110,7 @@ print()
 print("Superhéroes que empiezan con C: ")
 namesC(arbol)
 print()
-print("Cantidad de personajes en el árbol: ", nodeCounter(arbol))
+print("Cantidad de súperheroes en el árbol: ", nodeCounter(arbol))
 print()
 print("Superhéroes listados de forma descendente:")
 orderDescendente(arbol)

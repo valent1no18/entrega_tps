@@ -7,12 +7,10 @@ from diosesData import criaturas, CriaturasYDioses
 arbol = BinaryTree()
 
 for personaje in criaturas:
-    # b. se debe permitir cargar una breve descripción sobre cada criatura;
-    breveDescripcion = input(f"Ingrese una breve descripción sobre la criatura {personaje[0]}:")
     ente = CriaturasYDioses(
         criatura = personaje[0],
         derrotadoPor = personaje[1],
-        descripcion = breveDescripcion,
+        descripcion = personaje[2], # b. se debe permitir cargar una breve descripción sobre cada criatura;
         capturada = personaje[3]  # g. además cada nodo debe tener un campo “capturada” que almacenará el nombre del héroe o dios que la capturo;
     )
     arbol.insert(ente.criatura, ente)
@@ -31,12 +29,28 @@ def inOrder(tree_):
 
 
 # c. mostrar toda la información de la criatura Talos;
-pos = arbol.search('Talos')
-if pos is not None:
-    print(f"[+] INFORMACIÓN DE TALOS: {pos.other_values}")
+def searchTalos(tree_):
+    pos = tree_.search('Talos')
+    if pos is not None:
+        print(f"[+] INFORMACIÓN DE TALOS: {pos.other_values}")
 
+print()
 
 # d. determinar los 3 héroes o dioses que derrotaron mayor cantidad de criaturas;
+def ranking(tree_, rankingResult):
+    def __ranking(root, rankingResult):
+        if root is not None:
+            __ranking(root.left, rankingResult)
+            dios = root.other_values.derrotadoPor
+            if dios != "-":
+                if dios not in rankingResult:
+                    rankingResult[dios] = 1
+                else:
+                    rankingResult[dios] += 1
+            __ranking(root.right, rankingResult)
+
+    if tree_.root is not None:
+        __ranking(tree_.root, rankingResult)
 
 
 # e. listar las criaturas derrotadas por Heracles;
@@ -80,12 +94,27 @@ def atrapadasPorHeracles(tree_):
         pos = tree_.search(nombre)
         if pos is not None:
             pos.other_values.capturada = "Heracles"
-            print(f"[+] {nombre} AHORA ESTÁ COMO ATRAPADA POR HERACLES ({pos.other_values}).")
+            print(f"- {nombre} ({pos.other_values}).")
         else:
             print(f"[!] {nombre} NO SE ENCONTRÓ EN EL ÁRBOL.")
 
-# i. se debe permitir búsquedas por coincidencia;
 
+# i. se debe permitir búsquedas por coincidencia;
+# PRUEBAS DE QUE FUNCIONA CON CRIATURAS ESPECÍFICAS: 
+def searchByCoincidencia(tree_):
+    print("[+] EJEMPLOS DE BÚSQUEDAS POR COINCIDENCIA:")
+    tree_.proximity_search('Es')
+    print()
+    pos = tree_.search('Esteno')
+    if pos is not None:
+        print(f" - BUSCADO FINAL: {pos.other_values}")
+
+    print()
+    tree_.proximity_search('Me')
+    print()
+    pos = tree_.search('Medusa')
+    if pos is not None:
+        print(f" - BUSCADO FINAL: {pos.other_values}")
 
 
 # j. eliminar al Basilisco y a las Sirenas;
@@ -113,25 +142,49 @@ def capturadosHeracles(tree_):
     if tree_.root is not None:
         __capturadosHeracles(tree_.root)
 
-    print("[+] CRIATURAS DERROTADAS POR HERACLES:")
+    print("[+] CRIATURAS CAPTURADAS POR HERACLES:")
     for criatura in capturados:
         print(f"- {criatura}")
 
+# MAIN
 
 
+print("[+] LISTADO INORDER DE LAS CRIATURAS Y DE QUIENES LAS DERROTARON:")
+print(inOrder(arbol))
+print()
 
-#print("[+] LISTADO INORDER DE LAS CRIATURAS Y DE QUIENES LAS DERROTARON:")
-#print(inOrder(arbol))
-#print()
-#derrotadorHeracles(arbol)
-#print()
-#noDerrotados(arbol)
+searchTalos(arbol)
+print()
+
+resultadosTop = {}
+ranking(arbol, resultadosTop)
+def ordenarRanking(item):
+    return item[1]
+
+listRanking = list(resultadosTop.items())
+listRanking.sort(key=ordenarRanking, reverse=True)
+print("[+] TOP 3 DIOSES QUE DERROTARON UNA MAYOR CANTIDAD DE CRIATURAS: ")
+print(f"- {listRanking[:3]}")
+print()
+
+derrotadorHeracles(arbol)
+print()
+
+noDerrotados(arbol)
+print()
+
+print("[+] CRIATURAS QUE AHORA ESTÁN ATRAPADAS POR HERACLES:")
 atrapadasPorHeracles(arbol)
+print()
+
+searchByCoincidencia(arbol)
+print()
+
 print("[+] ÉSTOS PERSONAJES FUERON ELIMINADOS:")
 eliminados(arbol)
 print()
-# l. modifique el nombre de la criatura Ladón por Dragón Ladón;
 
+# l. modifique el nombre de la criatura Ladón por Dragón Ladón;
 value, other_value = arbol.delete("Ladón")
 if value is not None:
     nuevaCriatura = "Dragón Ladón"
@@ -139,6 +192,8 @@ if value is not None:
     arbol.insert(nuevaCriatura, other_value)
     print(f"[+] NUEVO NOMBRE PARA LADÓN: {other_value}")
 
+
+print()
 # m. realizar un listado por nivel del árbol;
 print("[+] LISTADO POR NIVEL DE LAS CRIATURAS Y DE QUIENES LAS DERROTARON:")
 arbol.by_level()
