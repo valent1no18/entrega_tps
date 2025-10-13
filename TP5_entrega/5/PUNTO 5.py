@@ -96,6 +96,7 @@ def generarBosque(tree_, treeHero, treeVillain):
     return treeHero, treeVillain
 
 
+
 # I. determinar cuántos nodos tiene cada árbol;
 def nodeCounterBosque(tree_):
     def __nodeCounterBosque(root):
@@ -111,6 +112,7 @@ print("Superhéroes que empiezan con C: ")
 namesC(arbol)
 print()
 print("Cantidad de súperheroes en el árbol: ", nodeCounter(arbol))
+
 print()
 print("Superhéroes listados de forma descendente:")
 orderDescendente(arbol)

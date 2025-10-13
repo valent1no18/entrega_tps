@@ -100,21 +100,17 @@ def atrapadasPorHeracles(tree_):
 
 
 # i. se debe permitir búsquedas por coincidencia;
-# PRUEBAS DE QUE FUNCIONA CON CRIATURAS ESPECÍFICAS: 
-def searchByCoincidencia(tree_):
-    print("[+] EJEMPLOS DE BÚSQUEDAS POR COINCIDENCIA:")
-    tree_.proximity_search('Es')
+ 
+def busquedaPorCoincidencia(tree_):
+    
+    buscado = input("Ingrese el nombre de la criatura a buscar: ")
     print()
-    pos = tree_.search('Esteno')
+    pos = tree_.search(buscado)
     if pos is not None:
-        print(f" - BUSCADO FINAL: {pos.other_values}")
+        print(f" - BUSCADO: {pos.other_values}")
+    else:
+        print(f" - {buscado} no se escuentra en el árbol.")
 
-    print()
-    tree_.proximity_search('Me')
-    print()
-    pos = tree_.search('Medusa')
-    if pos is not None:
-        print(f" - BUSCADO FINAL: {pos.other_values}")
 
 
 # j. eliminar al Basilisco y a las Sirenas;
@@ -177,7 +173,7 @@ print("[+] CRIATURAS QUE AHORA ESTÁN ATRAPADAS POR HERACLES:")
 atrapadasPorHeracles(arbol)
 print()
 
-searchByCoincidencia(arbol)
+busquedaPorCoincidencia(arbol)
 print()
 
 print("[+] ÉSTOS PERSONAJES FUERON ELIMINADOS:")
