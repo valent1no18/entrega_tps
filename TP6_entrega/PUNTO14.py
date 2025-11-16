@@ -2,10 +2,7 @@
 # a las siguientes tareas:
 
 from graph import Graph
-from heap import HeapMin
-from list_ import List
-from queue_ import Queue
-from stack import Stack
+import math
 
 casa = Graph(is_directed=False)
 
@@ -79,30 +76,44 @@ casa.show()
 print()
 
 # c. Árbol de expansión mínima y metros de cables necesarios
-print("[+] ÁRBOL DE EXPANSIÓN MÍNIMA")
-
-arbolExpansion = casa.kruskal("cocina")
-print(f"Árbol de expansión mínima: {arbolExpansion}")
-
-# Calcular metros totales de cables
+def expansionMinima(grafo):
+    expansionArbol = grafo.kruskal("baño1") #ejemplo de prueba
+    metrosTotal = 0
+    for edge in expansionArbol.split(';'):
+        origen, destino, peso = edge.split('-')
+        metrosTotal += int(peso)
+    print(f"Total de metros requeridos: {metrosTotal} m")
 
 
 
 # d. determinar cuál es el camino más corto desde la habitación 1 hasta la sala de estar para
 # determinar cuántos metros de cable de red se necesitan para conectar el router con el
 # Smart Tv.
+def caminoCocinaSala(grafo):
+    resultado = {}
+    camino = grafo.dijkstra("habitacion1")
+    destino = "salaEstar"
+    pesoTotal = None
+    caminoCompleto = []
 
-print("[+] CAMINO MÁS CORTO HABITACIÓN 1 → SALA DE ESTAR")
-
-def caminoCocinaSala(casa, origen):
-    camino = casa.dijkstra(origen)
     while camino.size() > 0:
-        nodo = camino.pop()
-        if nodo[0] == "salaEstar":
-            return nodo[1]
+        value = camino.pop()
+        if value[0] == destino:
+            if pesoTotal is None:
+                pesoTotal = value[1]
+            caminoCompleto.append(value[0])
+            destino = value[2]
 
-print(f"[-] Desde habitacion1: {caminoCocinaSala(casa, 'habitacion1')}")
+    caminoCompleto.reverse()
+    resultado["habitacion1"] = {
+            "camino": caminoCompleto,
+            "distancia": pesoTotal if pesoTotal is not None and pesoTotal != math.inf else math.inf
+        }
+    
+    return resultado
 
-
-
+expansionMinima(casa)
+print()
+print("CAMINO MÁS CORTO HABITACIÓN 1 → SALA DE ESTAR")
+print(caminoCocinaSala(casa))
 
